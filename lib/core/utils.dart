@@ -1,17 +1,22 @@
 import 'dart:developer';
 
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'models/my_model.dart';
 
 bool onboard = true;
+int mycoins = 1000;
+String myname = 'Player';
 
 // SHARED PREFS
 Future<void> getData() async {
   final prefs = await SharedPreferences.getInstance();
   // await prefs.remove('onboard');
   onboard = prefs.getBool('onboard') ?? true;
+  mycoins = prefs.getInt('mycoins') ?? 1000;
+  myname = prefs.getString('myname') ?? 'Player';
 }
 
 Future<void> saveData() async {
@@ -39,4 +44,8 @@ Future<List<MyModel>> updateModels() async {
 
 int getCurrentTimestamp() {
   return DateTime.now().millisecondsSinceEpoch ~/ 1000;
+}
+
+String getCoins() {
+  return NumberFormat('#,##0').format(mycoins);
 }

@@ -52,6 +52,10 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
+      colors: const [
+        Color(0xff87007A),
+        Color(0xff1000CC),
+      ],
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
