@@ -5,7 +5,7 @@ import 'app_colors.dart';
 final theme = ThemeData(
   useMaterial3: false,
   primarySwatch: Colors.grey,
-  fontFamily: 'SF', // w400
+  fontFamily: 'Poppins', // w600
   // textSelectionTheme: TextSelectionThemeData(
   //   cursorColor: AppColors.white50,
   //   selectionColor: AppColors.white50,

@@ -17,9 +17,9 @@ class HomePage extends StatelessWidget {
           BlocBuilder<HomeBloc, HomeState>(
             builder: (context, state) {
               if (state is HomeSettings) return const SettingsPage();
-
-              if (state is HomeActivities) return const Text('Actives');
-
+              if (state is HomeRules) return const Text('Rules');
+              if (state is HomePrivacy) return const Text('Privacy');
+              if (state is HomeProfile) return const Text('Profile');
               return const _Home();
             },
           ),

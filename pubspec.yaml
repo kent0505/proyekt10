@@ -27,12 +27,6 @@ flutter:
     - assets/
     - assets/fonts/
   fonts:
-    - family: SF
+    - family: Poppins
       fonts:
-        - asset: assets/fonts/SFProText-Regular.ttf
-    - family: SFM
-      fonts:
-        - asset: assets/fonts/SFProText-Medium.ttf
-    - family: SFB
-      fonts:
-        - asset: assets/fonts/SFProText-Bold.ttf
+        - asset: assets/fonts/Poppins-Medium.ttf

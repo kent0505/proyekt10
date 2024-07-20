@@ -40,7 +40,13 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
     );
     _animationController.addListener(() => setState(() {}));
     _animationController.repeat();
-    // load();
+    load();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 
   @override
