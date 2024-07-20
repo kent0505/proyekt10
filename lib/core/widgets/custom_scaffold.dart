@@ -13,8 +13,8 @@ class CustomScaffold extends StatelessWidget {
         children: [
           Container(
             height: MediaQuery.of(context).viewPadding.top,
-            // color: const Color(0xff06334D),
-            color: Colors.white,
+            color: const Color(0xff87007A),
+            // color: Colors.white,
           ),
           Expanded(
             child: Stack(
@@ -22,14 +22,14 @@ class CustomScaffold extends StatelessWidget {
                 Container(
                   decoration: const BoxDecoration(
                     color: Colors.white,
-                    // gradient: LinearGradient(
-                    //   begin: Alignment.topCenter,
-                    //   end: Alignment.bottomCenter,
-                    //   colors: [
-                    //     Color(0xff072434),
-                    //     Color(0xff0D0819),
-                    //   ],
-                    // ),
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color(0xff87007A),
+                        Color(0xff1000CC),
+                      ],
+                    ),
                   ),
                 ),
                 body,
