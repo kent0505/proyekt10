@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../core/utils.dart';
+import '../widgets/tile_button.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -77,32 +78,9 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          Container(
-            height: 56,
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(24),
-            ),
-            child: CupertinoButton(
-              onPressed: () {},
-              padding: EdgeInsets.zero,
-              child: Row(
-                children: [
-                  const Text(
-                    'Best Results',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Poppins',
-                    ),
-                  ),
-                  const Spacer(),
-                  SvgPicture.asset('assets/arrow.svg'),
-                ],
-              ),
-            ),
+          TileButton(
+            title: 'Best Results',
+            onPressed: () {},
           ),
         ],
       ),

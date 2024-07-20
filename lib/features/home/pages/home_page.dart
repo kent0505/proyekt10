@@ -5,8 +5,10 @@ import '../../../core/widgets/custom_appbar.dart';
 import '../../../core/widgets/custom_scaffold.dart';
 import '../bloc/home_bloc.dart';
 import '../widgets/nav_bar.dart';
-import 'profile_page.dart';
 import 'settings_page.dart';
+import 'rules_page.dart';
+import 'privacy_page.dart';
+import 'profile_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -21,8 +23,8 @@ class HomePage extends StatelessWidget {
             child: BlocBuilder<HomeBloc, HomeState>(
               builder: (context, state) {
                 if (state is HomeSettings) return const SettingsPage();
-                if (state is HomeRules) return const Text('Rules');
-                if (state is HomePrivacy) return const Text('Privacy');
+                if (state is HomeRules) return const RulesPage();
+                if (state is HomePrivacy) return const PrivacyPage();
                 if (state is HomeProfile) return const ProfilePage();
                 return const _Home();
               },
