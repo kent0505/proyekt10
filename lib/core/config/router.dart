@@ -1,7 +1,9 @@
 import 'package:go_router/go_router.dart';
 
+import '../../features/crazy/pages/crazy_page.dart';
 import '../../features/home/pages/home_page.dart';
 import '../../features/splash/splash_page.dart';
+import '../../features/sweet/pages/sweet_page.dart';
 
 final routerConfig = GoRouter(
   initialLocation: '/',
@@ -13,6 +15,14 @@ final routerConfig = GoRouter(
     GoRoute(
       path: '/home',
       builder: (context, state) => const HomePage(),
+    ),
+    GoRoute(
+      path: '/sweet',
+      builder: (context, state) => const SweetPage(),
+    ),
+    GoRoute(
+      path: '/crazy',
+      builder: (context, state) => const CrazyPage(),
     ),
   ],
 );

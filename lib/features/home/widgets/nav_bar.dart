@@ -41,19 +41,11 @@ class NavBar extends StatelessWidget {
                   },
                 ),
                 _NavBarButton(
-                  asset: 'tab2',
-                  title: 'Settings',
-                  active: state is HomeSettings,
-                  onPressed: () {
-                    context.read<HomeBloc>().add(ChangePageEvent(index: 1));
-                  },
-                ),
-                _NavBarButton(
                   asset: 'tab3',
                   title: 'Rules',
                   active: state is HomeRules,
                   onPressed: () {
-                    context.read<HomeBloc>().add(ChangePageEvent(index: 2));
+                    context.read<HomeBloc>().add(ChangePageEvent(index: 1));
                   },
                 ),
                 _NavBarButton(
@@ -61,7 +53,7 @@ class NavBar extends StatelessWidget {
                   title: 'Privacy',
                   active: state is HomePrivacy,
                   onPressed: () {
-                    context.read<HomeBloc>().add(ChangePageEvent(index: 3));
+                    context.read<HomeBloc>().add(ChangePageEvent(index: 2));
                   },
                 ),
                 _NavBarButton(
@@ -69,7 +61,7 @@ class NavBar extends StatelessWidget {
                   title: 'Profile',
                   active: state is HomeProfile,
                   onPressed: () {
-                    context.read<HomeBloc>().add(ChangePageEvent(index: 4));
+                    context.read<HomeBloc>().add(ChangePageEvent(index: 3));
                   },
                 ),
               ],
