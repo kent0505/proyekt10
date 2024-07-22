@@ -36,13 +36,14 @@ class MyCoins extends StatelessWidget {
               );
             },
           ),
-          const SizedBox(width: 10),
+          const Spacer(),
           CupertinoButton(
             onPressed: () {},
             padding: EdgeInsets.zero,
             minSize: 16,
             child: SvgPicture.asset('assets/add.svg'),
           ),
+          const SizedBox(width: 8),
         ],
       ),
     );

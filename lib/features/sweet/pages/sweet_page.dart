@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/sweet_appbar.dart';
 import '../widgets/sweet_scaffold.dart';
 
 class SweetPage extends StatelessWidget {
@@ -10,7 +11,9 @@ class SweetPage extends StatelessWidget {
     return const SweetScaffold(
       body: Column(
         children: [
-          Text('Aaa'),
+          SizedBox(height: 18),
+          SweetAppbar(),
+          SizedBox(height: 40),
         ],
       ),
     );

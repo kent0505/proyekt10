@@ -6,22 +6,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'models/my_model.dart';
 
-bool onboard = true;
 int mycoins = 1000;
 String myname = 'Player';
 
 // SHARED PREFS
 Future<void> getData() async {
   final prefs = await SharedPreferences.getInstance();
-  // await prefs.remove('onboard');
-  onboard = prefs.getBool('onboard') ?? true;
   mycoins = prefs.getInt('mycoins') ?? 1000;
   myname = prefs.getString('myname') ?? 'Player';
-}
-
-Future<void> saveData() async {
-  final prefs = await SharedPreferences.getInstance();
-  prefs.setBool('onboard', false);
 }
 
 Future<void> changeCoins(bool correct) async {

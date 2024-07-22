@@ -4,8 +4,8 @@ import 'package:flutter_svg/svg.dart';
 import '../../../core/widgets/buttons/arrow_back_button.dart';
 import '../../../core/widgets/my_coins.dart';
 
-class CrazyAppbar extends StatelessWidget {
-  const CrazyAppbar({super.key, this.canPop = true});
+class SweetAppbar extends StatelessWidget {
+  const SweetAppbar({super.key, this.canPop = true});
 
   final bool canPop;
 
@@ -13,15 +13,15 @@ class CrazyAppbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: MediaQuery.of(context).viewPadding.top),
-      child: Row(
+      child: const Row(
         children: [
-          const SizedBox(width: 24),
-          ArrowBackButton(canPop: canPop),
-          const SizedBox(width: 17),
-          const _Logo(),
-          const Spacer(),
-          const MyCoins(),
-          const SizedBox(width: 24),
+          SizedBox(width: 24),
+          ArrowBackButton(),
+          SizedBox(width: 17),
+          _Logo(),
+          Spacer(),
+          MyCoins(),
+          SizedBox(width: 24),
         ],
       ),
     );
@@ -35,7 +35,7 @@ class _Logo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 32,
-      width: 150,
+      width: 124,
       decoration: BoxDecoration(
         color: Colors.black.withOpacity(0.7),
         borderRadius: BorderRadius.circular(8),
@@ -43,10 +43,10 @@ class _Logo extends StatelessWidget {
       child: Row(
         children: [
           const SizedBox(width: 2),
-          SvgPicture.asset('assets/crazy_logo.svg'),
+          SvgPicture.asset('assets/sweet_logo.svg'),
           const Spacer(),
           const Text(
-            'Crazy Time',
+            'Sweet',
             style: TextStyle(
               color: Colors.white,
               fontSize: 16,

@@ -16,15 +16,9 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
   void load() async {
-    // context.read<TransactionBloc>().add(GetTransactionsEvent());
     await getData().then((value) {
       Future.delayed(const Duration(seconds: 2), () {
-        if (onboard) {
-          // context.go('/onboard');
-          context.go('/home');
-        } else {
-          context.go('/home');
-        }
+        context.go('/home');
       });
     });
   }
