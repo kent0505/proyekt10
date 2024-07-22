@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ArrowBackButton extends StatelessWidget {
-  const ArrowBackButton({super.key});
+  const ArrowBackButton({super.key, this.canPop = true});
+
+  final bool canPop;
 
   @override
   Widget build(BuildContext context) {
     return CupertinoButton(
       onPressed: () {
-        Navigator.pop(context);
+        if (canPop) Navigator.pop(context);
       },
       padding: EdgeInsets.zero,
       child: Container(

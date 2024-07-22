@@ -5,21 +5,23 @@ import '../../../core/widgets/buttons/arrow_back_button.dart';
 import '../../../core/widgets/my_coins.dart';
 
 class CrazyAppbar extends StatelessWidget {
-  const CrazyAppbar({super.key});
+  const CrazyAppbar({super.key, this.canPop = true});
+
+  final bool canPop;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: MediaQuery.of(context).viewPadding.top),
-      child: const Row(
+      child: Row(
         children: [
-          SizedBox(width: 24),
-          ArrowBackButton(),
-          Spacer(),
-          _Logo(),
-          SizedBox(width: 20),
-          MyCoins(),
-          SizedBox(width: 24),
+          const SizedBox(width: 24),
+          ArrowBackButton(canPop: canPop),
+          const Spacer(),
+          const _Logo(),
+          const SizedBox(width: 20),
+          const MyCoins(),
+          const SizedBox(width: 24),
         ],
       ),
     );
