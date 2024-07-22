@@ -5,6 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'core/config/router.dart';
 import 'core/config/themes.dart';
 import 'core/models/my_model.dart';
+import 'features/crazy/bloc/crazy_bloc.dart';
 import 'features/home/bloc/home_bloc.dart';
 
 void main() async {
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => HomeBloc()),
+        BlocProvider(create: (context) => CrazyBloc()),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
