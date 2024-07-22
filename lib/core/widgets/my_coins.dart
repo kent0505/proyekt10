@@ -26,7 +26,7 @@ class MyCoins extends StatelessWidget {
           BlocBuilder<HomeBloc, HomeState>(
             builder: (context, state) {
               return Text(
-                getCoins(),
+                formatCoins(),
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 11,

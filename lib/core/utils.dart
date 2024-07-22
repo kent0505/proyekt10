@@ -1,10 +1,7 @@
 import 'dart:developer';
 
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'models/my_model.dart';
 
 int mycoins = 1000;
 String myname = 'Player';
@@ -33,28 +30,36 @@ Future<void> saveCoins(int coin) async {
   await prefs.setInt('mycoins', mycoins);
 }
 
-// HIVE
-List<MyModel> mymodels = [];
-
-Future<List<MyModel>> getModels() async {
-  final box = await Hive.openBox('mymodelbox');
-  List data = box.get('mymodels') ?? [];
-  mymodels = data.cast<MyModel>();
-  log(mymodels.length.toString());
-  return mymodels;
-}
-
-Future<List<MyModel>> updateModels() async {
-  final box = await Hive.openBox('mymodelbox');
-  box.put('mymodels', mymodels);
-  mymodels = await box.get('mymodels');
-  return mymodels;
-}
-
-int getCurrentTimestamp() {
-  return DateTime.now().millisecondsSinceEpoch ~/ 1000;
-}
-
-String getCoins() {
+String formatCoins() {
   return NumberFormat('#,##0').format(mycoins);
 }
+
+String formatTimer(int totalSeconds) {
+  int minutes = totalSeconds ~/ 60;
+  int seconds = totalSeconds % 60;
+  return '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+}
+
+
+
+// // HIVE
+// List<MyModel> mymodels = [];
+
+// Future<List<MyModel>> getModels() async {
+//   final box = await Hive.openBox('mymodelbox');
+//   List data = box.get('mymodels') ?? [];
+//   mymodels = data.cast<MyModel>();
+//   log(mymodels.length.toString());
+//   return mymodels;
+// }
+
+// Future<List<MyModel>> updateModels() async {
+//   final box = await Hive.openBox('mymodelbox');
+//   box.put('mymodels', mymodels);
+//   mymodels = await box.get('mymodels');
+//   return mymodels;
+// }
+
+// int getCurrentTimestamp() {
+//   return DateTime.now().millisecondsSinceEpoch ~/ 1000;
+// }
