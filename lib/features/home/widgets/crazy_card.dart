@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 class CrazyCard extends StatelessWidget {
@@ -13,11 +13,23 @@ class CrazyCard extends StatelessWidget {
       },
       padding: EdgeInsets.zero,
       child: Container(
-        height: 96,
+        width: double.infinity,
+        // height: 96,
+        alignment: Alignment.centerLeft,
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(24),
+          gradient: LinearGradient(
+            colors: [
+              const Color(0xff088A2D).withOpacity(0.6),
+              const Color(0xff088A2D).withOpacity(0.8),
+              const Color(0xffB500D2).withOpacity(0.8),
+              const Color(0xffB500D2).withOpacity(0.4),
+              const Color(0xff8D002A).withOpacity(0),
+              const Color(0xff8D002A).withOpacity(0),
+            ],
+          ),
         ),
+        child: SvgPicture.asset('assets/crazy_card.svg'),
       ),
     );
   }
