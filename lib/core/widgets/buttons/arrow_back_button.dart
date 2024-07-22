@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../../../features/home/bloc/home_bloc.dart';
 
 class ArrowBackButton extends StatelessWidget {
   const ArrowBackButton({super.key, this.canPop = true});
@@ -11,7 +14,10 @@ class ArrowBackButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoButton(
       onPressed: () {
-        if (canPop) Navigator.pop(context);
+        if (canPop) {
+          Navigator.pop(context);
+          context.read<HomeBloc>().add(GetCoinsEvent());
+        }
       },
       padding: EdgeInsets.zero,
       child: Container(

@@ -9,7 +9,7 @@ class CrazyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoButton(
       onPressed: () {
-        context.push('/home/spinner');
+        context.push('/home/crazy');
       },
       padding: EdgeInsets.zero,
       child: Container(

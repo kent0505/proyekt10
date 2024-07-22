@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/models/quiz.dart';
+import '../../../core/utils.dart';
+import '../../home/bloc/home_bloc.dart';
 import '../bloc/crazy_bloc.dart';
 import '../widgets/answer_card.dart';
 import '../widgets/crazy_appbar.dart';
@@ -34,7 +36,7 @@ class _CrazyPageState extends State<CrazyPage> {
         if (id == 3) color3 = color;
         if (id == 4) color4 = color;
       });
-      // changeCoins(answer.correct);
+      changeCoins(answer.correct);
       Future.delayed(const Duration(seconds: 1), () {
         context.read<CrazyBloc>().add(NextQuizEvent());
       });
@@ -72,7 +74,7 @@ class _CrazyPageState extends State<CrazyPage> {
             listener: (context, state) {
               if (state is LoadedQuizState) {
                 setDefault(false);
-                // context.read<HomeBloc>().add(GetCoinsEvent());
+                context.read<HomeBloc>().add(GetCoinsEvent());
               }
 
               if (state is FinishedQuizState) {

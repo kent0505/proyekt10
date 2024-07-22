@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../features/home/bloc/home_bloc.dart';
 import '../utils.dart';
 
 class MyCoins extends StatelessWidget {
@@ -21,14 +23,18 @@ class MyCoins extends StatelessWidget {
           const SizedBox(width: 8),
           SvgPicture.asset('assets/coin.svg'),
           const SizedBox(width: 5),
-          Text(
-            getCoins(),
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 11,
-              fontWeight: FontWeight.w500,
-              fontFamily: 'Poppins',
-            ),
+          BlocBuilder<HomeBloc, HomeState>(
+            builder: (context, state) {
+              return Text(
+                getCoins(),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 11,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Poppins',
+                ),
+              );
+            },
           ),
           const SizedBox(width: 10),
           CupertinoButton(

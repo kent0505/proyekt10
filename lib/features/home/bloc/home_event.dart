@@ -6,3 +6,5 @@ class ChangePageEvent extends HomeEvent {
   final int index;
   ChangePageEvent({required this.index});
 }
+
+class GetCoinsEvent extends HomeEvent {}

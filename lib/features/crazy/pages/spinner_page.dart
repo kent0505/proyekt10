@@ -1,11 +1,14 @@
 import 'dart:math';
 
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:dotted_border/dotted_border.dart';
 
+import '../../../core/utils.dart';
+import '../../home/bloc/home_bloc.dart';
 import '../widgets/crazy_appbar.dart';
 import '../widgets/crazy_scaffold.dart';
 
@@ -19,7 +22,6 @@ class SpinnerPage extends StatefulWidget {
 class _SpinnerPageState extends State<SpinnerPage> {
   double turns = 0.0;
   double angle = 0;
-  bool active = true;
   bool buttonVisible = true;
   bool canPop = true;
 
@@ -47,18 +49,18 @@ class _SpinnerPageState extends State<SpinnerPage> {
 
   void onSpin() {
     setState(() {
-      active = false;
       canPop = false;
+      buttonVisible = false;
       turns += 5 / 1;
     });
     getRandom();
     Future.delayed(const Duration(seconds: 7), () {
-      setState(() {
-        buttonVisible = false;
-        canPop = true;
-      });
-      print('AAA');
-      // show dialog
+      showDialog(
+        context: context,
+        builder: (context) {
+          return _Dialog(getCoins());
+        },
+      );
     });
   }
 
@@ -147,15 +149,15 @@ class _SpinnerPageState extends State<SpinnerPage> {
             ],
           ),
           const SizedBox(height: 40),
-          // if (buttonVisible) _SpinButton(onSpin),
-          _SpinButton(() {
-            showDialog(
-              context: context,
-              builder: (context) {
-                return const _Dialog(150);
-              },
-            );
-          })
+          if (buttonVisible) _SpinButton(onSpin),
+          // _SpinButton(() {
+          //   showDialog(
+          //     context: context,
+          //     builder: (context) {
+          //       return const _Dialog(150);
+          //     },
+          //   );
+          // })
         ],
       ),
     );
@@ -372,8 +374,12 @@ class _Dialog extends StatelessWidget {
                     ),
                   ),
                   child: CupertinoButton(
-                    onPressed: () {
-                      context.pop();
+                    onPressed: () async {
+                      await saveCoins(coins).then((value) {
+                        context.read<HomeBloc>().add(GetCoinsEvent());
+                        context.pop();
+                        context.pop();
+                      });
                     },
                     padding: EdgeInsets.zero,
                     child: const Center(

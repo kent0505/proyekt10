@@ -24,6 +24,23 @@ Future<void> saveData() async {
   prefs.setBool('onboard', false);
 }
 
+Future<void> changeCoins(bool correct) async {
+  final prefs = await SharedPreferences.getInstance();
+  if (correct) {
+    mycoins = mycoins + 10;
+  } else {
+    mycoins = mycoins - 10;
+  }
+  log(mycoins.toString());
+  await prefs.setInt('mycoins', mycoins);
+}
+
+Future<void> saveCoins(int coin) async {
+  final prefs = await SharedPreferences.getInstance();
+  mycoins = mycoins + coin;
+  await prefs.setInt('mycoins', mycoins);
+}
+
 // HIVE
 List<MyModel> mymodels = [];
 
