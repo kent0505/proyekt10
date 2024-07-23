@@ -54,7 +54,7 @@ class _HomeState extends State<_Home> {
         children: [
           SizedBox(height: 24),
           SweetCard(),
-          SizedBox(height: 24),
+          SizedBox(height: 5),
           CrazyCard(),
         ],
       ),
