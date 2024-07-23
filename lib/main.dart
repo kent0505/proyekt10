@@ -7,6 +7,7 @@ import 'core/config/themes.dart';
 import 'core/models/my_model.dart';
 import 'features/crazy/bloc/crazy_bloc.dart';
 import 'features/home/bloc/home_bloc.dart';
+import 'features/sweet/bloc/sweet_bloc.dart';
 
 void main() async {
   await Hive.initFlutter();
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => HomeBloc()),
         BlocProvider(create: (context) => CrazyBloc()),
+        BlocProvider(create: (context) => SweetBloc()),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

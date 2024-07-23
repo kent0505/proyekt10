@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../core/utils.dart';
+class PairsCountCard extends StatelessWidget {
+  const PairsCountCard({super.key, required this.index});
 
-class TimerCard extends StatelessWidget {
-  const TimerCard({super.key, required this.sec});
-
-  final int sec;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 40,
-      width: 117,
+      width: 180,
       decoration: BoxDecoration(
-        color: const Color(0xff471993).withOpacity(0.7),
+        color: Colors.white.withOpacity(0.9),
         borderRadius: BorderRadius.circular(50),
       ),
       child: Row(
@@ -22,17 +20,18 @@ class TimerCard extends StatelessWidget {
           const SizedBox(width: 2),
           Container(
             height: 36,
-            width: 52,
+            width: 92,
             decoration: BoxDecoration(
-              color: const Color(0xff471993),
+              color: const Color(0xff9083EF),
               borderRadius: BorderRadius.circular(44),
             ),
-            child: Column(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 3),
-                SvgPicture.asset('assets/sweet/timer.svg'),
+                SvgPicture.asset('assets/sweet/pairs.svg'),
+                const SizedBox(width: 3),
                 const Text(
-                  'Time',
+                  'Pairs Left',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 10,
@@ -45,9 +44,9 @@ class TimerCard extends StatelessWidget {
           ),
           const Spacer(),
           Text(
-            formatTimer(sec),
+            '$index / 15',
             style: const TextStyle(
-              color: Colors.white,
+              color: Colors.black,
               fontSize: 14,
               fontWeight: FontWeight.w500,
               fontFamily: 'Poppins',

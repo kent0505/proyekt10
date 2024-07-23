@@ -43,7 +43,7 @@ class _Logo extends StatelessWidget {
       child: Row(
         children: [
           const SizedBox(width: 2),
-          SvgPicture.asset('assets/sweet_logo.svg'),
+          SvgPicture.asset('assets/sweet/sweet_logo.svg'),
           const Spacer(),
           const Text(
             'Sweet',
