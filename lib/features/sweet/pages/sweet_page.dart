@@ -63,6 +63,7 @@ class _SweetPageState extends State<SweetPage> {
   }
 
   void onFinished() {
+    _timer.cancel();
     showDialog(
       context: context,
       builder: (context) {
@@ -72,10 +73,10 @@ class _SweetPageState extends State<SweetPage> {
   }
 
   void onLoose() {
+    _timer.cancel();
     setState(() {
       _remember = 10;
       _start = 120;
-      _timer.cancel();
     });
     showDialog(
       context: context,
