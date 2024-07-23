@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/config/router.dart';
@@ -7,7 +8,12 @@ import 'features/crazy/bloc/crazy_bloc.dart';
 import 'features/home/bloc/home_bloc.dart';
 import 'features/sweet/bloc/sweet_bloc.dart';
 
-void main() async {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(const MyApp());
 }
 
