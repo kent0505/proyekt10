@@ -66,6 +66,7 @@ class _SweetPageState extends State<SweetPage> {
     _timer.cancel();
     showDialog(
       context: context,
+      useSafeArea: false,
       builder: (context) {
         return const SweetDialog(error: false);
       },
@@ -80,6 +81,7 @@ class _SweetPageState extends State<SweetPage> {
     });
     showDialog(
       context: context,
+      useSafeArea: false,
       builder: (context) {
         return const SweetDialog(error: true);
       },

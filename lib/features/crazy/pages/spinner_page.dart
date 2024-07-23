@@ -57,6 +57,7 @@ class _SpinnerPageState extends State<SpinnerPage> {
     Future.delayed(const Duration(seconds: 7), () {
       showDialog(
         context: context,
+        useSafeArea: false,
         builder: (context) {
           return _Dialog(getCoins());
         },
