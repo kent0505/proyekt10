@@ -24,7 +24,6 @@ class CrazyCard extends StatelessWidget {
                 child: Container(
                   height: 100,
                   width: double.infinity,
-                  // height: 96,
                   alignment: Alignment.centerLeft,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(24),
@@ -35,7 +34,6 @@ class CrazyCard extends StatelessWidget {
                         const Color(0xffB500D2).withOpacity(0.5),
                         const Color(0xffB500D2).withOpacity(0.5),
                         Colors.transparent,
-                        // const Color(0xff8D002A).withOpacity(0.5),
                         Colors.transparent,
                       ],
                     ),

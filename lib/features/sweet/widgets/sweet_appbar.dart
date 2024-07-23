@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../core/widgets/buttons/arrow_back_button.dart';
+import '../../../core/widgets/arrow_back_button.dart';
 import '../../../core/widgets/my_coins.dart';
 
 class SweetAppbar extends StatelessWidget {

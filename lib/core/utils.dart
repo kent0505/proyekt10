@@ -6,7 +6,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 int mycoins = 1000;
 String myname = 'Player';
 
-// SHARED PREFS
 Future<void> getData() async {
   final prefs = await SharedPreferences.getInstance();
   mycoins = prefs.getInt('mycoins') ?? 1000;
@@ -39,27 +38,3 @@ String formatTimer(int totalSeconds) {
   int seconds = totalSeconds % 60;
   return '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
 }
-
-
-
-// // HIVE
-// List<MyModel> mymodels = [];
-
-// Future<List<MyModel>> getModels() async {
-//   final box = await Hive.openBox('mymodelbox');
-//   List data = box.get('mymodels') ?? [];
-//   mymodels = data.cast<MyModel>();
-//   log(mymodels.length.toString());
-//   return mymodels;
-// }
-
-// Future<List<MyModel>> updateModels() async {
-//   final box = await Hive.openBox('mymodelbox');
-//   box.put('mymodels', mymodels);
-//   mymodels = await box.get('mymodels');
-//   return mymodels;
-// }
-
-// int getCurrentTimestamp() {
-//   return DateTime.now().millisecondsSinceEpoch ~/ 1000;
-// }

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'app_colors.dart';
-
 final theme = ThemeData(
   useMaterial3: false,
   primarySwatch: Colors.grey,
@@ -11,7 +9,7 @@ final theme = ThemeData(
   //   selectionColor: AppColors.white50,
   //   selectionHandleColor: AppColors.white50,
   // ),
-  colorScheme: ColorScheme.fromSwatch(
-    accentColor: AppColors.navBar, // overscroll indicator color
-  ),
+  // colorScheme: ColorScheme.fromSwatch(
+  //   accentColor: AppColors.navBar, // overscroll indicator color
+  // ),
 );

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../features/home/bloc/home_bloc.dart';
+import '../../features/home/bloc/home_bloc.dart';
 
 class ArrowBackButton extends StatelessWidget {
   const ArrowBackButton({super.key, this.canPop = true});
