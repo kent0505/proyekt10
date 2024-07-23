@@ -14,7 +14,15 @@ class SweetBloc extends Bloc<SweetEvent, SweetState> {
 
   SweetBloc() : super(SweetInitial()) {
     on<RememberSweetEvent>((event, emit) {
+      for (Sweet sweet in sweets) {
+        sweet.visible = true;
+        sweet.done = false;
+      }
       sweets.shuffle();
+      sweet1 = null;
+      sweet2 = null;
+      left = 0;
+      check = false;
       emit(RememberSweetState(sweets: sweets));
     });
 
@@ -60,22 +68,24 @@ class SweetBloc extends Bloc<SweetEvent, SweetState> {
             ));
           });
         } else {
-          for (Sweet sweet in sweets) {
-            if (sweet.asset == sweet1!.asset) sweet.done = true;
-            if (sweet.asset == sweet2!.asset) sweet.done = true;
-          }
-          sweet1 = null;
-          sweet2 = null;
-          check = false;
-          left = left + 1;
-          if (left == 15) {
-            emit(FinishedSweetState());
-          } else {
-            emit(StartedSweetState(
-              sweets: sweets,
-              left: left,
-            ));
-          }
+          await Future.delayed(const Duration(milliseconds: 500), () {
+            for (Sweet sweet in sweets) {
+              if (sweet.asset == sweet1!.asset) sweet.done = true;
+              if (sweet.asset == sweet2!.asset) sweet.done = true;
+            }
+            sweet1 = null;
+            sweet2 = null;
+            check = false;
+            left = left + 1;
+            if (left == 15) {
+              emit(FinishedSweetState());
+            } else {
+              emit(StartedSweetState(
+                sweets: sweets,
+                left: left,
+              ));
+            }
+          });
         }
       } else {
         for (Sweet sweet in sweets) {

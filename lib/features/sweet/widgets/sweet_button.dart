@@ -22,9 +22,11 @@ class SweetButton extends StatelessWidget {
           child: CupertinoButton(
             onPressed: state is StartedSweetState
                 ? () {
-                    context
-                        .read<SweetBloc>()
-                        .add(SelectSweetEvent(sweet: sweet));
+                    if (!sweet.visible) {
+                      context
+                          .read<SweetBloc>()
+                          .add(SelectSweetEvent(sweet: sweet));
+                    }
                   }
                 : null,
             padding: EdgeInsets.zero,

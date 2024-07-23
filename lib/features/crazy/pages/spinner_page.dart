@@ -260,9 +260,7 @@ class _Dialog extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Image.asset(
-              'assets/girl.png',
-            ),
+            child: Image.asset('assets/girl.png'),
           ),
         ),
         Align(

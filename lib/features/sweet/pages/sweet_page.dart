@@ -8,6 +8,7 @@ import '../bloc/sweet_bloc.dart';
 import '../widgets/pairs_count_card.dart';
 import '../widgets/remember_text.dart';
 import '../widgets/sweet_appbar.dart';
+import '../widgets/sweet_dialog.dart';
 import '../widgets/sweet_scaffold.dart';
 import '../widgets/sweets_list.dart';
 import '../widgets/timer_card.dart';
@@ -21,8 +22,8 @@ class SweetPage extends StatefulWidget {
 
 class _SweetPageState extends State<SweetPage> {
   late Timer _timer;
-  int _remember = 5;
-  int _start = 180;
+  int _remember = 10;
+  int _start = 120;
 
   void startRemember() {
     _timer = Timer.periodic(
@@ -31,9 +32,9 @@ class _SweetPageState extends State<SweetPage> {
         if (_remember == 1) {
           setState(() {
             timer.cancel();
-            context.read<SweetBloc>().add(StartSweetEvent());
             startTimer();
           });
+          context.read<SweetBloc>().add(StartSweetEvent());
         } else {
           setState(() {
             _remember--;
@@ -48,7 +49,7 @@ class _SweetPageState extends State<SweetPage> {
     _timer = Timer.periodic(
       const Duration(seconds: 1),
       (Timer timer) {
-        if (_start == 0) {
+        if (_start == 1) {
           timer.cancel();
           context.read<SweetBloc>().add(LooseSweetEvent());
         } else {
@@ -61,11 +62,33 @@ class _SweetPageState extends State<SweetPage> {
     );
   }
 
+  void onFinished() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const SweetDialog(error: false);
+      },
+    );
+  }
+
+  void onLoose() {
+    setState(() {
+      _remember = 10;
+      _start = 120;
+      _timer.cancel();
+    });
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const SweetDialog(error: true);
+      },
+    );
+  }
+
   @override
   void initState() {
     super.initState();
     context.read<SweetBloc>().add(RememberSweetEvent());
-    startRemember();
   }
 
   @override
@@ -79,13 +102,11 @@ class _SweetPageState extends State<SweetPage> {
     return SweetScaffold(
       body: BlocListener<SweetBloc, SweetState>(
         listener: (context, state) {
-          if (state is FinishedSweetState) {
-            // dialog
-          }
+          if (state is RememberSweetState) startRemember();
 
-          if (state is LooseSweetState) {
-            // dialog
-          }
+          if (state is FinishedSweetState) onFinished();
+
+          if (state is LooseSweetState) onLoose();
         },
         child: BlocBuilder<SweetBloc, SweetState>(
           builder: (context, state) {

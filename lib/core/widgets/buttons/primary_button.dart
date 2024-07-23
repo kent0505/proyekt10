@@ -6,21 +6,29 @@ class PrimaryButton extends StatelessWidget {
     super.key,
     required this.title,
     this.active = true,
+    required this.width,
+    required this.colors,
+    required this.borderColor,
     required this.onPressed,
   });
 
   final String title;
   final bool active;
+  final double width;
+  final List<Color> colors;
+  final Color borderColor;
   final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 50,
-      width: MediaQuery.of(context).size.width > 400 ? 400 : null,
+      width: width,
       decoration: BoxDecoration(
         color: Colors.black,
         borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: borderColor),
+        gradient: LinearGradient(colors: colors),
       ),
       child: CupertinoButton(
         onPressed: active ? onPressed : null,
